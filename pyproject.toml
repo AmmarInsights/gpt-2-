@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gpt2-gqa"
+version = "0.1.0"
+description = "A GPT-2 style language model with grouped-query attention and a from-scratch byte-level BPE tokenizer, trained on Shakespeare."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = ["numpy>=1.24", "torch>=2.0", "matplotlib>=3.5"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+gpt2-gqa-train = "gpt2_gqa.train:main"
+gpt2-gqa-generate = "gpt2_gqa.generate:main"
+gpt2-gqa-prepare = "gpt2_gqa.data:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
